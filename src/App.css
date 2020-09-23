@@ -2,3 +2,16 @@
   display: flex;
   justify-content: center;
 }
+.particles {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  color: gray;
+}
+.on-top {
+  position: relative;
+  z-index: 1;
+}
