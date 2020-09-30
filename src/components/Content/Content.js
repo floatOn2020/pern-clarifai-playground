@@ -4,17 +4,24 @@ import ImageBox from "./ImageBox/ImageBox";
 import UserGreeting from "./UserGreeting/UserGreeting";
 import "./Content.css";
 
-const Content = ({onInputChange, onButtonSubmit, url}) => {
+const Content = ({
+  onInputChange,
+  onFormSubmit,
+  inputValue,
+  imageUrl,
+  boxes,
+}) => {
   return (
     <main className="main-content ">
       <UserGreeting />
       <InputForm
         onInputChange={onInputChange}
-        onButtonSubmit={onButtonSubmit}
+        onFormSubmit={onFormSubmit}
+        inputValue={inputValue}
       />
-      <ImageBox url={url}/>
+      <ImageBox url={imageUrl} boxes={boxes} />
     </main>
   );
-}
+};
 
 export default Content;
