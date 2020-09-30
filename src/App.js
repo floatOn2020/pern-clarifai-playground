@@ -4,7 +4,8 @@ import React from 'react';
 import Clarifai from 'clarifai';
 import Navbar from './components/Navbar/Navbar'
 import Content from './components/Content/Content.js'
-import SignIn from './components/Content/SignIn/SignIn';
+import SignIn from './components/SignIn/SignIn';
+import Register from './components/Register/Register';
 import Footer from './components/Footer/Footer'
 import './App.css';
 
@@ -20,7 +21,7 @@ class App extends React.Component {
       imageUrl: "",
       boxes: [],
       signedIn: false,
-      route: ''
+      route: 'home'
     };
   }
   // signInAndOut = () => {
@@ -78,15 +79,18 @@ class App extends React.Component {
           signedIn={this.state.signedIn}
           routing={this.routing}
         />
-        { this.state.route === 'signIn'
-          ? <SignIn />
-          : <Content
-            onInputChange={this.onInputChange}
-            onFormSubmit={this.onFormSubmit}
-            imageUrl={this.state.imageUrl}
-            boxes={this.state.boxes}
-            inputValue={this.state.input}
-            />
+        { this.state.route === 'home'
+          ? <Content
+              onInputChange={this.onInputChange}
+              onFormSubmit={this.onFormSubmit}
+              imageUrl={this.state.imageUrl}
+              boxes={this.state.boxes}
+              inputValue={this.state.input}
+              />
+          : ( this.state.route === 'signIn'
+              ? <SignIn routing={this.routing}/>
+              : <Register routing={this.routing} />
+            )
         }
         <Footer />
       </div>

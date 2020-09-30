@@ -1,16 +1,18 @@
 import React from 'react';
 import Navigation from "./Navigation";
 import Logo from "./Logo";
+import "./Navbar.css";
+
 
 const Navbar = ({signedIn, routing}) => {
   return (
-    <div className="flex justify-between">
+    <nav className="flex justify-between">
       <Logo />
       <Navigation
         signedIn={signedIn}
         routing={routing}
         />
-    </div>
+    </nav>
   )
 }
 
