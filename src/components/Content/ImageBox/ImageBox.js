@@ -5,10 +5,10 @@ const ImageBox = ({url,boxes}) => {
   // make an array of bordered divs with the coordinates of the boxes
   const boxesHtml = [];
   boxes.forEach(box => {
-    let key = 0;
+    // let key = 0;
     boxesHtml.push(
       <div
-        key={key}
+        key={boxes.indexOf(box)}
         className="absolute ba faceBox"
         style={{
           border: "3px solid #137752",
@@ -20,7 +20,7 @@ const ImageBox = ({url,boxes}) => {
         }}
       ></div>
       );
-      key +=1;
+      // key +=1;
   })
 
   return (

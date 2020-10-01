@@ -29,6 +29,11 @@ class App extends React.Component {
   //   this.setState({signedIn: this.signedIn ? false : true})
   // }
   routing = (route) => {
+    if (route === 'signOut') {
+      this.setState({signedIn: false})
+    } else if (route === 'home') {
+      this.setState({signedIn: true})
+    }
     this.setState({route: route})
     // console.log('going to ' + route + ' this.route is now: ' + this.state.route, this.state.signedIn)
   }
@@ -72,26 +77,32 @@ class App extends React.Component {
   componentDidMount() { this.predict() }
 
   render() {
+    const {signedIn, imageUrl, boxes, input, route} = this.state
     return (
       <div className="App code dark-green">
         {/* <Particles className="particles" params={particlesOptions}/> */}
-        <Navbar
-          signedIn={this.state.signedIn}
-          routing={this.routing}
-        />
-        { this.state.route === 'home'
-          ? <Content
-              onInputChange={this.onInputChange}
-              onFormSubmit={this.onFormSubmit}
-              imageUrl={this.state.imageUrl}
-              boxes={this.state.boxes}
-              inputValue={this.state.input}
-              />
-          : ( this.state.route === 'signIn'
-              ? <SignIn routing={this.routing}/>
-              : <Register routing={this.routing} />
-            )
-        }
+        <Navbar signedIn={signedIn} routing={this.routing} />
+        {route === "home" ? (
+          <Content
+            onInputChange={this.onInputChange}
+            onFormSubmit={this.onFormSubmit}
+            imageUrl={imageUrl}
+            boxes={boxes}
+            inputValue={input}
+          />
+        ) : route === "signIn" ? (
+          <SignIn routing={this.routing} />
+        ) : route === "register" ? (
+          <Register routing={this.routing} />
+        ) : (
+          <Content
+            onInputChange={this.onInputChange}
+            onFormSubmit={this.onFormSubmit}
+            imageUrl={imageUrl}
+            boxes={boxes}
+            inputValue={input}
+          />
+        )}
         <Footer />
       </div>
     );

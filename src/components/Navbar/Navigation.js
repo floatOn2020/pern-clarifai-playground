@@ -2,9 +2,7 @@ import React from 'react'
 
 const Navigation = ({signedIn, routing}) => {
   const goTo = signedIn ? 'signOut' : 'signIn';
-  const displayRoute = signedIn ? 'SignOut' : 'SignIn';
-  console.log(goTo)
-
+  const displayRoute = signedIn ? 'Sign out' : 'Sign in';
   return (
     <nav style={{ display: "flex", justifyContent: "flex-end" }}>
       <p
